@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/myang/chuckwalla/test'
+let g:netrw_dirhist_2='/Users/myang/chuckwalla'
+let g:netrw_dirhist_3='/Users/myang'
+let g:netrw_dirhist_4='/Users/myang/chuckwalla/test'
