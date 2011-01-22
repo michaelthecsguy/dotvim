@@ -21,6 +21,7 @@ git_bundles = [
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
   "git://github.com/vim-ruby/vim-ruby.git",
+  "https://github.com/nelstrom/vim-blackboard.git",
 ]
 
 vim_org_scripts = [
