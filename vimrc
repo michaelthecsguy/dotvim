@@ -1,21 +1,37 @@
+"This must be first, because it changes other options as a side effect
+set nocompatible
+
+"For Pathogen -- Plug-ins mgmt tool with update_bundles
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " Basic Configuration after initial VIM installation
-" set list for showing whitespaces and set nolist to hide the whitespace indicator 
-set hidden
 
-"show line number
-set number
+colorscheme blackboard
+
+"store lots of :cmdline history
+set history=1000
+
+"set list for showing whitespaces and set nolist to hide the whitespace indicator 
+set showcmd      "show incomplete cmds down at the bottom of VIM
+set showmode     "show current mode down at the bottom of VIM
+
+set incsearch    "find the next match as we type the search
+set hlsearch     "highlight searches by default
+
+set hidden       "hide buffers when not displayed
+
+set nowrap       "tell vim not wrap lines
+set linebreak    "wrap lines at convenient points
+set number       "show line number
 set noautoindent
 set smartindent
 
 "inserts spaces instead of actual tabs
 "set expandtab
 
-"auto set working directory to current
-set autochdir
+set autochdir    "auto set working directory to current
 
 "wildmenu to get an over view of the files in current directory when I go :e
 "and then TAB
@@ -27,10 +43,15 @@ set wildmode=list:longest
 
 set vb t_vb=
 set ts=2 sts=2 sw=2 expandtab
-syntax on
-command! Status echo "The initial installation for your VIM is success!"
+syntax on         "turn on syntax highlighting
 
 if has("autocmd")
   filetype plugin indent on
   autocmd! BufEnter * :lcd %:p:h
 endif " has("autocmd")
+
+if has('gui_running')
+  set guifont=Monaco_Console:h11
+endif
+
+command! Status echo "The initial installation for your VIM is success!"
