@@ -41,7 +41,10 @@ set wildmode=list:longest
 "python
 "set wildignore=*.pyc, *pyo, *.class
 
+"to prevents vi from making its annoying beeps when a command doesn't work
+"Instead, it briefly flashes the screen
 set vb t_vb=
+
 "set tab, softtab
 set ts=2 sts=2 sw=2 expandtab
 nmap <leader>l :set list!<CR>
