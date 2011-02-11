@@ -42,7 +42,11 @@ set wildmode=list:longest
 "set wildignore=*.pyc, *pyo, *.class
 
 set vb t_vb=
+"set tab, softtab
 set ts=2 sts=2 sw=2 expandtab
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+
 syntax on         "turn on syntax highlighting
 
 if has("autocmd")
