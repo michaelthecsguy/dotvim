@@ -37,6 +37,9 @@ set autochdir    "auto set working directory to current
 "and then TAB
 set wildmode=list:longest
 
+"set grep to use ack instead of grep so that I can use copen for quickfix list
+set grepprg=ack
+
 "to hide some auto-generated files such as .class .pyc files in java and
 "python
 "set wildignore=*.pyc, *pyo, *.class
