@@ -24,7 +24,7 @@ set showcmd      "show incomplete cmds down at the bottom of VIM
 set showmode     "show current mode down at the bottom of VIM
 set incsearch    "find the next match as we type the search
 set hlsearch     "highlight searches by default
-set hidden       "hide buffers when not displayed
+set hidden       "switch to different buffer w/o error msg and even hidden buffers has not been saved 
 set nowrap       "tell vim not wrap lines
 set linebreak    "wrap lines at convenient points
 set number       "show line number
