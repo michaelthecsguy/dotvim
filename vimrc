@@ -65,6 +65,9 @@ let Tlist_WinWidth = 40
 
 "********Key Mappings********
 "Adding TextMate’s key mappings for shifting text left and right (< and >)
+"Auto Indent short cut key is = after vjjjj selecting the code block
+"Auto Format short cut key is =G where G is from the end and gg is from the top 
+
 "nmap (normal mode mapping) and vmap (visual mode mapping)
 nmap <D-[> <<
 nmap <D-]> >>
