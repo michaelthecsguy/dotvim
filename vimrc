@@ -63,25 +63,13 @@ let Tlist_Show_One_File = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 40
 
-"Only do this part when vim/mvim is compiled with support for autocommands
-if has("autocmd")
-  filetype plugin indent on
-
-  "Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-
-  "Customizations based on house-style (arbitrary)
-  autocmd FileType html,css,scss,ruby,pml,yaml,coffee,vim setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-
-  "Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
-
-  "Automatically source my vimrc when using :w
-  autocmd bufwritepost .vimrc source $MYVIMRC
-
-  autocmd! BufEnter * :lcd %:p:h
-endif " has("autocmd")
+"********Key Mappings********
+"Adding TextMate’s key mappings for shifting text left and right (< and >)
+"nmap (normal mode mapping) and vmap (visual mode mapping)
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -97,5 +85,41 @@ if &t_Co > 2 || has('gui_running')
   "for Mac
   set guifont=Monaco:h11
 endif
+
+"Only do this part when vim/mvim is compiled with support for autocommands
+if has("autocmd")
+  filetype plugin indent on
+
+  "Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+
+  "Customizations based on house-style (arbitrary)
+  autocmd FileType html,css,scss,ruby,pml,yaml,coffee,vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+
+  "Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+  
+  "Automatically to strip trailing whitespaces when a file is saved
+  autocmd BufWritePre *.py,*.rb,*.yaml,*.feature,*.js :call <SID>StripTrailingWhitespaces()
+  
+  "Automatically source my vimrc when using :w
+  autocmd BufWritePost .vimrc source $MYVIMRC
+
+  autocmd! BufEnter * :lcd %:p:h
+endif " has("autocmd")
+
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
 command! Status echo "The initial installation for your VIM is success!"
