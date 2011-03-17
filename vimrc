@@ -79,6 +79,10 @@ if has("autocmd")
   "Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 
+  "Automatically source my vimrc without typing it in mvim's terminal like
+  ":write
+  autocmd bufwritepost .vimrc source $MYVIMRC
+
   autocmd! BufEnter * :lcd %:p:h
 endif " has("autocmd")
 
