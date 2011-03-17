@@ -11,7 +11,7 @@ call pathogen#helptags()
 colorscheme blackboard
 
 "store lots of :cmdline history
-set history=1000
+set history=10000
 
 "set list for showing whitespaces and set nolist to hide the whitespace indicator 
 set showcmd      "show incomplete cmds down at the bottom of VIM
@@ -50,13 +50,35 @@ set vb t_vb=
 
 "set tab, softtab
 set ts=2 sts=2 sw=2 expandtab
-nmap <leader>l :set list!<CR>
+"nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 syntax on         "turn on syntax highlighting
 
+"Select the exuberant ctags (had to be downloaded and installed!)
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+
+"configure Tag List
+let Tlist_Show_One_File = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 40
+
+"Only do this part when compiled with support for autocommands
 if has("autocmd")
   filetype plugin indent on
+
+  "Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  "Customizations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+
+  "Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
+
   autocmd! BufEnter * :lcd %:p:h
 endif " has("autocmd")
 
