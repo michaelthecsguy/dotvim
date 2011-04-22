@@ -29,6 +29,7 @@ set nowrap       "tell vim not wrap lines
 set linebreak    "wrap lines at convenient points
 set number       "show line number
 set ruler        "show the cursor position all the time
+set scrolloff=999 "Set the cursor in the middle of the view in VIM and another good number is 5
 set cursorline
 set nojoinspaces
 set noautoindent
@@ -126,3 +127,29 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 command! Status echo "The initial installation for your VIM is success!"
+
+"***************************************************"
+"the followings are the tips in VIM's command prompt
+"***************************************************"
+"to wrap the current long line
+"Vgq
+
+"to search for 'one' or 'two'
+"/one\|two
+
+"to show undo list in tree
+":undolist
+
+"to show how many instances of vim in your system
+":!type -a vim
+
+"search for files
+":vim command-t
+
+"quickFix after grep
+":copen
+
+"Tabular to view Class and Method structure
+":!ctag -R
+":!ctag *.rb
+":TlistOpen
