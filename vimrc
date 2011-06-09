@@ -146,8 +146,15 @@ command! Status echo "The initial installation for your VIM is success!"
 "search for files
 ":vim command-t
 
+"to set grep to use ack
+":set grepprg
+":set grepprg=ack
+
 "quickFix after grep
 ":copen
+":cc
+":cp
+":c
 
 "Tabular to view Class and Method structure
 ":!ctag -R
