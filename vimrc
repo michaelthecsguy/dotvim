@@ -83,6 +83,7 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has('gui_running')
+  "Enable syntax highlighting
   syntax on
   set hlsearch
 
@@ -110,9 +111,17 @@ if has("autocmd")
   "Automatically source my vimrc when using :w
   autocmd BufWritePost .vimrc source $MYVIMRC
 
+  "Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
   autocmd! BufEnter * :lcd %:p:h
+
 endif " has("autocmd")
 
+"Get rid of Trailing Whitespaces
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
