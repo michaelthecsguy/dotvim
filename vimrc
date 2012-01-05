@@ -34,6 +34,7 @@ set cursorline
 set nojoinspaces
 set noautoindent
 set smartindent
+set title        "Show file name and some other information in the title bar
 
 "inserts spaces instead of actual tabs
 "set expandtab
